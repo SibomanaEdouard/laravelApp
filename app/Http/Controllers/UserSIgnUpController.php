@@ -19,6 +19,7 @@ class UserSignUpController extends Controller
             "email" => "required|email",
             "password" => "required",
             "phone" => "required",
+            "work"=>"required",
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -43,6 +44,7 @@ if($phoneExist){
         $user->email = $validateData['email'];
         $user->password = $validateData['password'];
         $user->phone = $validateData['phone'];
+        $user->work = $validateData['work'];
         $user->image_url = $imageUrl ?? null;
 
         $savedNewUser = $user->save();
@@ -112,6 +114,7 @@ $request->session()->flash('error','Sorry, something went wrong ! Please try aga
         "email" => "required|email",
         "password" => "required",
         "phone" => "required",
+        "work"=>"required",
         'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
@@ -121,6 +124,7 @@ $request->session()->flash('error','Sorry, something went wrong ! Please try aga
     $user->email = $validateData['email'];
     $user->password = $validateData['password'];
     $user->phone = $validateData['phone'];
+    $user->work = $validateData['work'];
 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
