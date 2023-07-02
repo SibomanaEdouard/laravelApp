@@ -19,7 +19,7 @@
     
     }
     h1{
-        color:blue;
+        color:#A0BDFF;
         
     }
     .navbar{
@@ -71,6 +71,7 @@
             <p>Lastname: {{ $users->lastname }}</p>
             <p>Email: {{ $users->email }}</p>
             <p>Phone: {{ $users->phone }}</p>
+            <p>Work: {{ $users->work }}</p>
         </div>
         <div class="col-6 image">
             <img src="{{ $users->image_url }}" alt="My profile">

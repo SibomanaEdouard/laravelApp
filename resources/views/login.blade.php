@@ -13,9 +13,17 @@
         *{
             font-family:inter;
         box-sizing:border-box;
+        font-size:20px;
         }
-        .hlog{
-          margin-left:30%;
+        .submit{
+            display:inline;
+        }
+        h1{
+            color:#A0BDFF;
+            font-size:25px;
+        }
+        button{
+            background-color:#A0BDFF;
         }
     </style>
 </head>
@@ -30,15 +38,11 @@
         {{ session('success') }}
     </div>
 @endif
-<div class="container hlog">
-    <div class="container ">
-        <h1 container>Login</h1>
-    </div>
+
+        <h1 class="text-center mt-4">Login in public system</h1>
+  <!-- <div class="container-fluid border  w-50 mt-5 row"> -->
     
-</div>
-  <div class="container-fluid border  w-50 mt-5 ">
-    
-    <div class='container p-5 bg-white'>
+    <div class='text-center p-5 bg-white col-md-12'>
 
         <form action="/login" method="post">
        @csrf
@@ -47,13 +51,14 @@
        
         <label for="password">Password</label><br>
         <input type="password" name="password" id="password" required><br>
-        <button type="submit" class="bg-primary mt-5">Login</button>
+        <button type="submit" class="mt-5 text-primary">Login</button>
     </form>
-    <h1>Do you have an account? 
-        <button id="signButton" class="bg-primary" type="submit">sign up</button>
-       </h1>
+    <h1 class='submit'>Do you have an account?   </h1>
+        <button id="signButton" class="submit border-0" type="submit">sign up</button>
+     
 </div>
-       </div>
+
+     
        <script>
         document.getElementById("signButton").addEventListener('click',function(event){
             event.preventDefault();
@@ -67,6 +72,7 @@
         })
         
        </script>
+
        <!-- This is the js about js link about the bootstrap -->
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

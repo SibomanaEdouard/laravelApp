@@ -13,19 +13,15 @@
         *{
             font-family:inter;
             box-sizing:border-box;
-            font-size:16px;
+            font-size:20px;
            
-        }
-        .formdes{
-            background-color: blue;
-            height:80vh;
         }
         input[type='file']{
             display:none;
         }
         .custom-file-upload {
         display: inline-block;
-        padding: 6px 12px;
+        padding: 5px 10px;
         cursor: pointer;
         background-color: #ccc;
         color: #fff;
@@ -33,8 +29,24 @@
     
     }
     .cont1{
-        margin-top:5%;
-     padding:10%;   
+        margin-top:0%;
+     padding:10%; 
+     height:100%;
+            width:100%; 
+    
+    }
+    button{
+        background-color: #A0BDFF;
+    }
+    .header1{
+        color:#A0BDFF;
+    }
+    .submit{
+        display:inline;
+    }
+    .headerbutton{
+        color:#A0BDFF;
+
     }
     </style>
 </head>
@@ -62,12 +74,12 @@
 
     })
 </script>
-    <div class="container border formdes w-75 ">
-        <div class="container  border   bg-white cont1 ">
+ <h1 class="header1 text-center fs-3">Sign up in puplic system<h1>
+        <div class=" bg-white cont1 ">
     <form action="{{ url('/users') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
         <label for="firstname">FirstName</label><br>
         <input type="text" name="firstname" id="firstname" required placeholder="enter firstname"><br>
         <label for="lastname">LastName</label><br>
@@ -75,22 +87,26 @@
         <label for="email">Email</label><br>
         <input type="email" name="email" id="email" required placeholder="enter email"><br>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
         <label for="phone">Phone</label><br>
         <input type="tel" name="phone" id="phone" required placeholder="enter phone number"><br>
         <label for="password">Password</label><br>
         <input type="password" name="password" id="password" required placeholder="enter password"><br>
+        <label for="work">work</label><br>
+        <input type="tel" name="work" id="work" required placeholder="enter work you do"><br>
         <label for="image" class="custom-file-upload mt-3">Add photo</label><br>
         <input type="file" name="image" id="image" title="choose photo" required><br>
+        
 </div>
-        <button type="submit" class="w-50 m-5 bg-primary p-2">Sign up</button>
+        <button type="submit" class="w-50 m-5  p-2">Sign up</button>
 </div>
     </form>
-    <h1>Do you have an account? 
-        <button id="loginButton" type="submit" class="bg-primary">Login</button>
-    </h1>
+    <h1 class="submit headerbutton fs-3">Do you have an account?</h1> 
+
+        <button id="loginButton" type="submit" class="p-2 border-0  fs-4 submit ">Login</button>
+    
     </div>
-    </div>
+    <!-- </div> -->
     <script>
         document.getElementById('loginButton').addEventListener('click', function(event) {
             event.preventDefault(); // Prevents the default form submission behavior
