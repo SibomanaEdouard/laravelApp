@@ -55,16 +55,26 @@
 <h1 class="text-center ">My Information</h1>
 <div class="container-fluid">
     <div class="row border justify-content-center">
+    @foreach($data as $users)
+    <div class="border mt-2 row">
         <div class="col-6">
-            <p>Firstname: {{ $user->firstname }}</p>
-            <p>Lastname: {{ $user->lastname }}</p>
-            <p>Email: {{ $user->email }}</p>
-            <button id="updateButton" class="btn bg-primary border" type="submit">Update</button>
-            <button id="deleteButton" class="btn bg-primary border"  type="submit">Delete</button>
+            
+            <p>Firstname: {{ $users->firstname }}</p>
+            <p>Lastname: {{ $users->lastname }}</p>
+            <p>Email: {{ $users->email }}</p>
+            <p>Phone: {{ $users->phone }}</p>
         </div>
         <div class="col-6 image">
-            <img src="{{ $user->image_url }}" alt="My profile">
+            <img src="{{ $users->image_url }}" alt="My profile">
         </div>
+</div>
+        @endforeach
+      
+
+
+
+        <button id="updateButton" class="btn bg-primary border" type="submit">Update</button>
+            <button id="deleteButton" class="btn bg-primary border"  type="submit">Delete</button>
     </div>
 </div>
     <script>

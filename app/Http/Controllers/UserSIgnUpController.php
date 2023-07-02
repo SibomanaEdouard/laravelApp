@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -79,7 +80,12 @@ if($phoneExist){
     {
 if (Auth::check()) {
     $user = Auth::user();
-    return view('information',compact('user'));
+
+    //let me retrieve all data from database
+    $data = DB::table('users')->get();
+
+    //this is to pass retrieved data to the view
+    return view('information',compact('user','data'));
 } else {
 
     return redirect()->back()->with('error','Sorry , something went wrong! Please Try again latter');
