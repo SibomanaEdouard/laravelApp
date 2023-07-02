@@ -8,15 +8,65 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+    *{
+        font-family:inter;
+        box-sizing:border-box
+    }
+    .image img{
+        width:30%;
+    
+    }
+    h1{
+        color:blue;
+        
+    }
+    </style>
 </head>
 <body class="antialiased">
-<h1>My Information</h1>
-    <p>Firstname: {{ $user->firstname }}</p>
-    <p>Lastname:{{$user->lastname}}</p>
-    <p>Email: {{ $user->email }}</p>
-    <img src={{$user->image_url}} alt="My profile"/>
-    <button id="updateButton" type="submit">Update</button>
-    <button id="deleteButton" type="submit">Delete</button>
+
+  <!-- This is to display the success login message  and error messages-->
+@if(session('success'))
+    <div id="successMessage" class="alert text-primary fs-5 text-center ">
+        {{ session('success') }}
+    </div>
+@endif
+@if(session('error'))
+<div class="alert text-warning fs-5 text-center" id="errorMessage">
+    {{session('error')}}
+</div>
+@endif
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+       const successMessage = document.getElementById('successMessage');
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 3500);
+    });
+    document.addEventListener("DOMContentLoaded",function(){
+        const errorMessage=document.getElementById("errorMessage");
+        setTimeout(() => {
+            errorMessage.style.display='none';
+        }, 5000);
+    })
+</script>
+
+<h1 class="text-center ">My Information</h1>
+<div class="container-fluid">
+    <div class="row border justify-content-center">
+        <div class="col-6">
+            <p>Firstname: {{ $user->firstname }}</p>
+            <p>Lastname: {{ $user->lastname }}</p>
+            <p>Email: {{ $user->email }}</p>
+            <button id="updateButton" class="btn bg-primary border" type="submit">Update</button>
+            <button id="deleteButton" class="btn bg-primary border"  type="submit">Delete</button>
+        </div>
+        <div class="col-6 image">
+            <img src="{{ $user->image_url }}" alt="My profile">
+        </div>
+    </div>
+</div>
     <script>
 
     document.getElementById("updateButton").addEventListener('click',function(event){
@@ -36,8 +86,8 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Data deleted successfully
-                    alert('User data deleted successfully.');
+                  
+    
                   window.location.href='/signup'
                 } else {
                     // Handle error case
@@ -49,8 +99,8 @@
                 alert('An error occurred while deleting user data.');
             });
         }
-    
-    })
+    })    
     </script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
