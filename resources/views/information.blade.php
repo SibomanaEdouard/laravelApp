@@ -22,6 +22,14 @@
         color:blue;
         
     }
+    .navbar{
+        background-color:black;
+        position:fixed;
+        bottom:0px;
+        width:100%;
+        height:10%;
+
+    }
     </style>
 </head>
 <body class="antialiased">
@@ -52,7 +60,7 @@
     })
 </script>
 
-<h1 class="text-center ">My Information</h1>
+<h1 class="text-center fixed-top ">Friends'Information</h1>
 <div class="container-fluid">
     <div class="row border justify-content-center">
     @foreach($data as $users)
@@ -69,20 +77,21 @@
         </div>
 </div>
         @endforeach
-      
-
-
-
-        <button id="updateButton" class="btn bg-primary border" type="submit">Update</button>
-            <button id="deleteButton" class="btn bg-primary border"  type="submit">Delete</button>
     </div>
 </div>
-    <script>
+<div class="navbar">
 
+<button id="updateButton" class="btn bg-primary border" type="submit">Update</button>
+<button id="logOutButton" class="btn bg-primary border" type="button">Logout</button>
+            <button id="deleteButton" class="btn bg-primary border"  type="submit">Delete</button>
+</div>
+    <script>
+//this is to update information
     document.getElementById("updateButton").addEventListener('click',function(event){
         event.preventDefault();
         window.location.href="/update";
     })
+    //this is to signout
     document.getElementById("deleteButton").addEventListener('click',function(event){
 
         if (confirm('Are you sure you want to delete your data?')) {
@@ -109,7 +118,14 @@
                 alert('An error occurred while deleting user data.');
             });
         }
-    })    
+    })   
+    //this is to logout
+    document.getElementById("logOutButton").addEventListener('click',function(){
+        if(confirm("Are you ready to logout of the system?")){
+            window.location.href='/';
+        }
+    })
+    
     </script>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
